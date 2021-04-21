@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import Habit from './habit';
+import AddForm from './addForm';
 
 class Habits extends Component {
 	render() {
-		const { habits, onIncrement, onDecrement, onDelete } = this.props;
+		const { habits, onIncrement, onDecrement, onDelete, onAdd } = this.props;
 		return (
-			<ul>
-				{habits.map((habit) => (
-					<Habit
-						key={habit.id}
-						habit={habit}
-						onIncrement={onIncrement}
-						onDecrement={onDecrement}
-						onDelete={onDelete}
-					/>
-				))}
-			</ul>
+			<>
+				<AddForm onAdd={onAdd} />
+				<ul>
+					{habits.map((habit) => (
+						<Habit
+							key={habit.id}
+							habit={habit}
+							onIncrement={onIncrement}
+							onDecrement={onDecrement}
+							onDelete={onDelete}
+						/>
+					))}
+				</ul>
+			</>
 		);
 	}
 }
