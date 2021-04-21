@@ -63,10 +63,11 @@ class App extends Component {
 	};
 
 	render() {
-		const total = this.state.habits.reduce((acc, cur) => acc + cur.count, 0);
 		return (
 			<>
-				<Navbar total={total} />
+				<Navbar
+					total={this.state.habits.filter((habit) => habit.count > 0).length}
+				/>
 				<AddForm
 					value={this.state.formText}
 					onChange={this.handleChange}

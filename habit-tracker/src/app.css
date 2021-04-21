@@ -1,3 +1,26 @@
+* {
+	box-sizing: border-box;
+}
+
+.navbar {
+	padding: 1em;
+	background-color: blanchedalmond;
+	font-size: 2rem;
+}
+
+.navbar-count {
+	display: inline-block;
+	width: 2.5rem;
+	height: 2.5rem;
+	margin-left: 0.2em;
+	background-color: green;
+	border-radius: 50%;
+	color: white;
+	font-size: 2rem;
+	line-height: 2.5rem;
+	text-align: center;
+}
+
 button {
 	outline: none;
 	border: 0;
