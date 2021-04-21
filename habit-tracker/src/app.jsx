@@ -34,15 +34,16 @@ class App extends Component {
 		this.setState({ habits });
 	};
 
-	handleReset = () => {
-		const habits = this.state.habits.map((habit) => {
-			return { ...habit, count: 0 };
-		});
+	handleAdd = (name) => {
+		const habits = [...this.state.habits, { id: Date.now(), name, count: 0 }];
 		this.setState({ habits });
 	};
 
-	handleAdd = (name) => {
-		const habits = [...this.state.habits, { id: Date.now(), name, count: 0 }];
+	handleReset = () => {
+		const habits = this.state.habits.map((habit) => {
+			habit.count = 0;
+			return habit;
+		});
 		this.setState({ habits });
 	};
 
@@ -58,8 +59,8 @@ class App extends Component {
 					onDecrement={this.handleDecrement}
 					onDelete={this.handleDelete}
 					onAdd={this.handleAdd}
+					onReset={this.handleReset}
 				/>
-				<button onClick={this.handleReset}>Reset All</button>
 			</>
 		);
 	}

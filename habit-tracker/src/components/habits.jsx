@@ -4,7 +4,14 @@ import AddForm from './addForm';
 
 class Habits extends Component {
 	render() {
-		const { habits, onIncrement, onDecrement, onDelete, onAdd } = this.props;
+		const {
+			habits,
+			onIncrement,
+			onDecrement,
+			onDelete,
+			onAdd,
+			onReset,
+		} = this.props;
 		return (
 			<>
 				<AddForm onAdd={onAdd} />
@@ -19,6 +26,9 @@ class Habits extends Component {
 						/>
 					))}
 				</ul>
+				<button className="habits-reset" onClick={onReset}>
+					Reset All
+				</button>
 			</>
 		);
 	}
