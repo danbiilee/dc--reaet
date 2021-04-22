@@ -20,6 +20,7 @@ class Habits extends Component {
 						<Habit
 							key={habit.id}
 							habit={habit}
+							count={habit.count} // 💡 성능 해결방법 1.
 							onIncrement={onIncrement}
 							onDecrement={onDecrement}
 							onDelete={onDelete}
