@@ -1,6 +1,13 @@
-import React, { Component } from 'react';
+/* 
+	⚡ 성능 개선: state나 props에 변화가 없다면 render 함수를 호출하지 않음 
+	- Component -> PureComponent
+	- 이 컴포넌트는 onAdd 라는 콜백함수를 props로 가지는데, 
+		onAdd는 App 클래스가 처음 만들어질 때 할당된 뒤로 다시는 업데이트 되지 않는 멤버변수!
+		-> 리렌더 될 일이 없다! 
+*/
+import React, { PureComponent } from 'react';
 
-class AddForm extends Component {
+class AddForm extends PureComponent {
 	// ⚡ createRef: 리액트에서 DOM 요소 접근하기
 	// input 요소가 렌더링되면, inputRef와 연결됨
 	formRef = React.createRef();
@@ -15,7 +22,7 @@ class AddForm extends Component {
 	};
 
 	render() {
-		const { value, onChange, onAdd } = this.props;
+		const { value, onChange } = this.props;
 		return (
 			<form className="add-form" onSubmit={this.onSubmit} ref={this.formRef}>
 				<input
