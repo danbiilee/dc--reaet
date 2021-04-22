@@ -15,9 +15,10 @@ import React, { PureComponent } from 'react';
 	💡 성능 해결방법
 	1. count 값을 분리해서 props로 전달한다. 
 		-> 그럼 habit 오브젝트의 프로퍼티가 아니라 원시 데이터 그 자체로 넘어오기 때문
+	2. 핸들링 함수 내부에서 업데이트 될 habit의 오브젝트를 새롭게 만들어줌 
 */
 class Habit extends PureComponent {
-	// 내부적으로 가지고 있는 state 없이 외부에서 전달받은 props를 보여주기만 하는 컴포넌트
+	// 내부적으로 가지고 있는 state 없이 외부에서 전달받은 props를 보ㄴ여주기만 하는 컴포넌트
 	// -> 클릭 이벤트 발생 -> 내부적으로 데이터 처리하지 않고, props로 주어진 콜백함수만 호출
 	handleIncrement = () => {
 		this.props.onIncrement(this.props.habit);
@@ -32,8 +33,7 @@ class Habit extends PureComponent {
 	};
 
 	render() {
-		const { name } = this.props.habit;
-		const { count } = this.props; // 💡 성능 해결방법 1.
+		const { name, count } = this.props.habit;
 
 		return (
 			<li className="habit">
