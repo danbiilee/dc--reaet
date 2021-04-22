@@ -18,48 +18,59 @@ import React, { PureComponent } from 'react';
 	2. 핸들링 함수 내부에서 업데이트 될 habit의 오브젝트를 새롭게 만들어줌 
 */
 class Habit extends PureComponent {
-	// 내부적으로 가지고 있는 state 없이 외부에서 전달받은 props를 보ㄴ여주기만 하는 컴포넌트
-	// -> 클릭 이벤트 발생 -> 내부적으로 데이터 처리하지 않고, props로 주어진 콜백함수만 호출
-	handleIncrement = () => {
-		this.props.onIncrement(this.props.habit);
-	};
+  // ⚡ Lifecycle methods
+  // UI상에 보여질 때
+  componentDidMount() {
+    console.log(`habit: ${this.props.habit.name} did mount`);
+  }
 
-	handleDecrement = () => {
-		this.props.onDecrement(this.props.habit);
-	};
+  // UI상에서 사라질 때
+  componentWillUnmount() {
+    console.log(`habit: ${this.props.habit.name} will unmount`);
+  }
 
-	handleDelete = () => {
-		this.props.onDelete(this.props.habit);
-	};
+  // 내부적으로 가지고 있는 state 없이 외부에서 전달받은 props를 보ㄴ여주기만 하는 컴포넌트
+  // -> 클릭 이벤트 발생 -> 내부적으로 데이터 처리하지 않고, props로 주어진 콜백함수만 호출
+  handleIncrement = () => {
+    this.props.onIncrement(this.props.habit);
+  };
 
-	render() {
-		const { name, count } = this.props.habit;
+  handleDecrement = () => {
+    this.props.onDecrement(this.props.habit);
+  };
 
-		return (
-			<li className="habit">
-				<span className="habit-name">{name}</span>
-				<span className="habit-count">{count}</span>
-				<button
-					className="habit-button habit-increase"
-					onClick={this.handleIncrement}
-				>
-					<i className="fas fa-plus-square"></i>
-				</button>
-				<button
-					className="habit-button habit-decrease"
-					onClick={this.handleDecrement}
-				>
-					<i className="fas fa-minus-square"></i>
-				</button>
-				<button
-					className="habit-button habit-delete"
-					onClick={this.handleDelete}
-				>
-					<i className="fas fa-trash"></i>
-				</button>
-			</li>
-		);
-	}
+  handleDelete = () => {
+    this.props.onDelete(this.props.habit);
+  };
+
+  render() {
+    const { name, count } = this.props.habit;
+
+    return (
+      <li className="habit">
+        <span className="habit-name">{name}</span>
+        <span className="habit-count">{count}</span>
+        <button
+          className="habit-button habit-increase"
+          onClick={this.handleIncrement}
+        >
+          <i className="fas fa-plus-square"></i>
+        </button>
+        <button
+          className="habit-button habit-decrease"
+          onClick={this.handleDecrement}
+        >
+          <i className="fas fa-minus-square"></i>
+        </button>
+        <button
+          className="habit-button habit-delete"
+          onClick={this.handleDelete}
+        >
+          <i className="fas fa-trash"></i>
+        </button>
+      </li>
+    );
+  }
 }
 
 export default Habit;
