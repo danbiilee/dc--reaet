@@ -1,9 +1,8 @@
 import './app.css';
+import Main from './components/pages/main';
 
 function App() {
-  return (
-    <h1>This is template!</h1>
-  );
+	return <Main />;
 }
 
 export default App;
