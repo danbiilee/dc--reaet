@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../layout/header';
+import HeaderContainer from '../layout/header';
 
 const Main = (props) => {
-	return <Header />;
+	return <HeaderContainer />;
 };
 
 export default Main;
