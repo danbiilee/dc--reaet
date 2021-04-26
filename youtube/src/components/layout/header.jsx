@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import Button from "../common/button";
-import Icon from "../common/icon";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import Button from '../common/button';
+import Icon from '../common/icon';
 import {
   faBars,
   faVideo,
@@ -10,9 +10,9 @@ import {
   faBell,
   faUserCircle,
   faSearch,
-} from "@fortawesome/free-solid-svg-icons";
-import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { themeColor } from "../../utils/colorStyle";
+} from '@fortawesome/free-solid-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { themeColor } from '../../utils/colorStyle';
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -42,10 +42,10 @@ const SearchSection = styled(Div)`
   input {
     height: 43px;
     padding: 10px 20px;
-    background: ${(props) => props.theme.white};
-    border: 1px solid ${(props) => props.theme.gray300};
+    background: ${props => props.theme.white};
+    border: 1px solid ${props => props.theme.gray300};
     border-radius: 3px;
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 1.3rem;
   }
 `;
@@ -69,13 +69,13 @@ const ButtonMargin = styled(Button)`
 const ButtonSearch = styled(Button)`
   height: 43px;
   padding: 0 40px;
-  background-color: ${(props) => props.theme.gray100};
-  border: 1px solid ${(props) => props.theme.gray300};
+  background-color: ${props => props.theme.gray100};
+  border: 1px solid ${props => props.theme.gray300};
   border-radius: 3px;
   border
 `;
 
-const Header = () => {
+const Header = ({ searchKeyword, handleChange, handleSearch }) => {
   return (
     <HeaderContainer>
       <LogoSection>
@@ -89,8 +89,14 @@ const Header = () => {
         </h1>
       </LogoSection>
       <SearchSection>
-        <form className="form__search">
-          <input className="input__search" type="text" placeholder="Search" />
+        <form className="form__search" onSubmit={handleSearch}>
+          <input
+            className="input__search"
+            type="text"
+            placeholder="Search"
+            value={searchKeyword}
+            onChange={handleChange}
+          />
           <ButtonSearch type="submit">
             <Icon icon={faSearch} color={themeColor.gray} />
           </ButtonSearch>

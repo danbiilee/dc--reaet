@@ -4,7 +4,7 @@ import { useRouteMatch } from 'react-router-dom';
 import VideoCard from './videoCard';
 
 const Ul = styled.ul`
-  ${(props) =>
+  ${props =>
     props.orientation === 'portrait' &&
     css`
       display: flex;
@@ -30,8 +30,8 @@ const VideoList = ({ list }) => {
   return (
     <Ul orientation={orientation}>
       {list.length > 0
-        ? list.map((item) => (
-            <VideoCard key={item.id} id={item.id} snippet={item.snippet} />
+        ? list.map((item, index) => (
+            <VideoCard key={index} id={item.id} snippet={item.snippet} />
           ))
         : 'loading...'}
     </Ul>
