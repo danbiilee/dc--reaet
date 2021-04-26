@@ -9,7 +9,8 @@ function App() {
 
   const handleChange = (e) => setSearchKeyword(e.target.value);
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
     fetch(
       `${process.env.REACT_APP_BASE_URL}/search?key=${process.env.REACT_APP_API_KEY}&part=snippet&cmaxResults=25&q=${searchKeyword}`
     )
