@@ -5,6 +5,18 @@ import Detail from './components/pages/detail';
 
 function App() {
   const [list, setList] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState('');
+
+  const handleChange = (e) => setSearchKeyword(e.target.value);
+
+  const handleSearch = () => {
+    fetch(
+      `${process.env.REACT_APP_BASE_URL}/search?key=${process.env.REACT_APP_API_KEY}&part=snippet&cmaxResults=25&q=${searchKeyword}`
+    )
+      .then((res) => res.json())
+      .then((data) => console.log(data.items))
+      .catch(console.log);
+  };
 
   useEffect(() => {
     fetch(

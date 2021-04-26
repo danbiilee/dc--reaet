@@ -20,7 +20,7 @@ const VideoList = ({ list }) => {
   /* 
     Differentiate component orientation for using common component 
     - landscape: at main page
-    - portrait: at detail page
+    - portrait: at detail/filtered page
   */
   const match = useRouteMatch();
   const orientation = match.params.hasOwnProperty('videoId')
