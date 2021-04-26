@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  height: 4em;
+  padding: 0.8em 1em;
+  background-color: black;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+}
+
+.input {
+  flex-basis: 100%; /* 너비가 가능한만큼 늘어남 */
+  font-size: 1.2rem;
+  outline: 0;
+}
+
+.button {
+  background-color: darkgray;
+  outline: 0;
+}
+
+.buttonImg {
+  height: 100%; /* 이미지 높이를 버튼에 맞춤 */
+  padding: 0.5em 0.2em;
+}
