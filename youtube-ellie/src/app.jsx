@@ -18,18 +18,26 @@ function App({ youtube }) {
   const [videos, setVideos] = useState([]);
   const [selecteVideo, setSelecteVideo] = useState(null);
 
-  const selectVideo = (video) => setSelecteVideo(video);
+  const selectVideo = video => setSelecteVideo(video);
 
-  const search = (query) => {
+  const search = query => {
+    /* 
+      ✅ 기능 추가
+      - 로딩 스피너 보이기       
+      - error state 추가하기
+    */
     youtube
       .search(query) //
-      .then((videos) => setVideos(videos));
+      .then(videos => {
+        setVideos(videos);
+        setSelecteVideo(null); // ✅ 검색 시 다시 grid 목록으로 돌아가기
+      });
   };
 
   useEffect(() => {
     youtube
       .mostPopular() //
-      .then((videos) => setVideos(videos));
+      .then(videos => setVideos(videos));
   }, []);
 
   return (
