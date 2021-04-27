@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './app.module.css';
 import SearchHeader from './components/search_header/search_header';
+import VideoDetail from './components/video_detail/video_detail';
 import VideoList from './components/video_list/video_list';
 
 /* 
@@ -15,6 +16,9 @@ import VideoList from './components/video_list/video_list';
 */
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
+  const [selecteVideo, setSelecteVideo] = useState(null);
+
+  const selectVideo = (video) => setSelecteVideo(video);
 
   const search = (query) => {
     youtube
@@ -31,7 +35,21 @@ function App({ youtube }) {
   return (
     <div className={styles.app}>
       <SearchHeader onSearch={search} />
-      <VideoList videos={videos} />
+      <section className={styles.content}>
+        {selecteVideo && (
+          <div className={styles.detail}>
+            <VideoDetail video={selecteVideo} />
+          </div>
+        )}
+        {/* 리액트 컴포넌트에는 className을 지정할 수 없음. 스타일링이 필요하면 구조적으로 태그 추가 */}
+        <div className={styles.list}>
+          <VideoList
+            videos={videos}
+            onVideoClick={selectVideo}
+            display={selecteVideo ? 'list' : 'grid'}
+          />
+        </div>
+      </section>
     </div>
   );
 }

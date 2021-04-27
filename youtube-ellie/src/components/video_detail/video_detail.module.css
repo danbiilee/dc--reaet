@@ -1,0 +1,8 @@
+.detail {
+  padding: 0.2em;
+}
+
+.description {
+  /* pre 태그 공간 넘어감 해결 */
+  white-space: pre-wrap;
+}
