@@ -14,3 +14,13 @@
 .list {
   flex: 1 1 30%;
 }
+
+/* 
+  max-width는 보통 780정도로 잡음
+  -> 16 / 780 -> 48rem
+*/
+@media screen and (max-width: 48rem) {
+  .content {
+    flex-direction: column;
+  }
+}
