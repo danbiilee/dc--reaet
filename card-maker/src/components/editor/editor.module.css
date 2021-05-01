@@ -1,0 +1,5 @@
+@value makerLightGrey from '../../common/colors.css';
+
+.editor {
+  border-right: 1px solid makerLightGrey;
+}
