@@ -22,10 +22,10 @@ const Maker = ({ authService }) => {
   return (
     <section className={styles.maker}>
       <Header onLogout={onLogout} />
-      <main className={styles.main}>
+      <div className={styles.container}>
         <Editor />
         <Preview />
-      </main>
+      </div>
       <Footer />
     </section>
   );

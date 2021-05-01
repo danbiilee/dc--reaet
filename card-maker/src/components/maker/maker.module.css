@@ -1,26 +1,19 @@
-@value makerWhite, makerGreen from '../../common/colors.css';
+@value mediaQuery from '../../common/size.css';
 
 .maker {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
-.main {
+.container {
   flex: 1;
   display: flex;
-  background-color: makerWhite;
 }
 
-.main > section {
-  flex-basis: 50%;
-  text-align: center;
-  color: makerGreen;
-}
-
-@media screen and (max-width: 48em) {
-  .main {
+@media screen and (max-width: mediaQuery) {
+  .container {
     flex-direction: column;
   }
 }

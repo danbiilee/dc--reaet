@@ -3,7 +3,7 @@ import styles from './editor.module.css';
 
 const Editor = props => (
   <section className={styles.editor}>
-    <h2 className={styles.title}>Card Maker</h2>
+    <h1 className={styles.title}>Card Maker</h1>
   </section>
 );
 

@@ -1,2 +1,12 @@
+@value makerGreen from '../../common/colors.css';
+
 .preview {
+  flex-basis: 50%;
+  background-color: wheat;
+}
+
+.title {
+  margin-bottom: 1em;
+  color: makerGreen;
+  text-align: center;
 }

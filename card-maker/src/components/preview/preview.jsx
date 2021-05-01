@@ -3,7 +3,7 @@ import styles from './preview.module.css';
 
 const Preview = props => (
   <section className={styles.preview}>
-    <h2 className={styles.title}>Card Preview</h2>
+    <h1 className={styles.title}>Card Preivew</h1>
   </section>
 );
 
