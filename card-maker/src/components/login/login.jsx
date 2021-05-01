@@ -1,17 +1,26 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router';
 import styles from './login.module.css';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 
 const Login = ({ authService }) => {
   const history = useHistory();
+  const goToMaker = userId => {
+    history.push('/maker', { id: userId });
+  };
 
   const onLogin = e => {
     authService //
       .login(e.currentTarget.textContent)
-      .then(() => history.push('/app'));
+      .then(result => goToMaker(result.user.uid));
   };
+
+  useEffect(() => {
+    authService.onAuthChange(user => {
+      user && goToMaker(user.uid);
+    });
+  });
 
   return (
     <section className={styles.login}>
