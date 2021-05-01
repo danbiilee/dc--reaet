@@ -1,13 +1,16 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styles from './login.module.css';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 
 const Login = ({ authService }) => {
+  const history = useHistory();
+
   const onLogin = e => {
     authService //
       .login(e.currentTarget.textContent)
-      .then(console.log);
+      .then(() => history.push('/app'));
   };
 
   return (

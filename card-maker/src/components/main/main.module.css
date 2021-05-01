@@ -1,0 +1,13 @@
+@value makerWhite from '../../common/colors.css';
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: makerWhite;
+}
+
+.content {
+  flex: 1;
+}
