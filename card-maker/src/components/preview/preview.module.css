@@ -2,11 +2,17 @@
 
 .preview {
   flex-basis: 50%;
-  background-color: wheat;
 }
 
 .title {
   margin-bottom: 1em;
   color: makerGreen;
   text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em 2em;
 }
