@@ -1,13 +1,13 @@
-import React from 'react';
-import Button from '../button/button';
-import styles from './card-edit-form.module.css';
-import ImageFileInput from '../image_file_input/image_file_input';
+import React from "react";
+import Button from "../button/button";
+import styles from "./card-edit-form.module.css";
+import ImageFileInput from "../image_file_input/image_file_input";
 
-const CardEditForm = ({ card }) => {
+const CardEditForm = ({ card, onDelete }) => {
   const {
+    id,
     name,
     company,
-    title,
     position,
     email,
     message,
@@ -16,7 +16,10 @@ const CardEditForm = ({ card }) => {
     fileUrl,
   } = card;
 
-  const onSubmit = () => {};
+  const onSubmit = (event) => {
+    event.preventDefault();
+    onDelete(id);
+  };
 
   return (
     <form className={styles.form}>
