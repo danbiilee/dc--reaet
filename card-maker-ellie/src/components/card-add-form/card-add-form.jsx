@@ -1,9 +1,8 @@
-import React, { useRef } from 'react';
-import Button from '../button/button';
-import styles from './card-add-form.module.css';
-import ImageFileInput from '../image_file_input/image_file_input';
+import React, { useRef } from "react";
+import Button from "../button/button";
+import styles from "./card-add-form.module.css";
 
-const CardAddForm = ({ onAdd }) => {
+const CardAddForm = ({ FileInput, onAdd }) => {
   const formRef = useRef();
   const nameRef = useRef();
   const companyRef = useRef();
@@ -12,18 +11,18 @@ const CardAddForm = ({ onAdd }) => {
   const emailRef = useRef();
   const messageRef = useRef();
 
-  const onSubmit = event => {
+  const onSubmit = (event) => {
     event.preventDefault();
     const card = {
       id: Date.now(), // uuid
-      company: nameRef.current.value || '',
-      name: companyRef.current.value || '',
+      company: nameRef.current.value || "",
+      name: companyRef.current.value || "",
       theme: themeRef.current.value, // theme은 값이 없을 수 없음!
-      position: positionRef.current.value || '',
-      email: emailRef.current.value || '',
-      message: messageRef.current.value || '',
-      fileName: '',
-      fileUrl: '',
+      position: positionRef.current.value || "",
+      email: emailRef.current.value || "",
+      message: messageRef.current.value || "",
+      fileName: "",
+      fileUrl: "",
     };
     formRef.current.reset();
     onAdd(card);
@@ -71,7 +70,7 @@ const CardAddForm = ({ onAdd }) => {
         placeholder="Message"
       ></textarea>
       <div className={styles.fileInput}>
-        <ImageFileInput />
+        <FileInput />
       </div>
       <Button name="Add" onClick={onSubmit} />
     </form>

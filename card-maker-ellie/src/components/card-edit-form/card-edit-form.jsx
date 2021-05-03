@@ -1,9 +1,8 @@
-import React from 'react';
-import Button from '../button/button';
-import styles from './card-edit-form.module.css';
-import ImageFileInput from '../image_file_input/image_file_input';
+import React from "react";
+import Button from "../button/button";
+import styles from "./card-edit-form.module.css";
 
-const CardEditForm = ({ card }) => {
+const CardEditForm = ({ FileInput, card }) => {
   const {
     name,
     company,
@@ -36,7 +35,7 @@ const CardEditForm = ({ card }) => {
         className={styles.input}
         type="text"
         name="position"
-        value={position}
+        value={title}
       />
       <input className={styles.input} type="text" name="email" value={email} />
       <textarea
@@ -45,7 +44,7 @@ const CardEditForm = ({ card }) => {
         value={message}
       ></textarea>
       <div className={styles.fileInput}>
-        <ImageFileInput />
+        <FileInput />
       </div>
       <Button name="Delete" onClick={onSubmit} />
     </form>
