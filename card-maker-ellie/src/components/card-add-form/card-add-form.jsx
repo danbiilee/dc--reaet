@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
-import Button from '../button/button';
-import styles from './card-add-form.module.css';
-import ImageFileInput from '../image_file_input/image_file_input';
+import { logDOM } from "@testing-library/dom";
+import React, { useRef, useState } from "react";
+import Button from "../button/button";
+import styles from "./card-add-form.module.css";
 
-const CardAddForm = ({ onAdd }) => {
+const CardAddForm = ({ FileInput, onAdd }) => {
   const formRef = useRef();
   const nameRef = useRef();
   const companyRef = useRef();
@@ -11,21 +11,33 @@ const CardAddForm = ({ onAdd }) => {
   const positionRef = useRef();
   const emailRef = useRef();
   const messageRef = useRef();
+  const [file, setFile] = useState({ fileName: null, fileUrl: null });
 
-  const onSubmit = event => {
+  const onFileChange = (file) => {
+    setFile({
+      fileName: file.name,
+      fileUrl: file.url,
+    });
+  };
+
+  const onSubmit = (event) => {
     event.preventDefault();
     const card = {
       id: Date.now(), // uuid
-      company: nameRef.current.value || '',
-      name: companyRef.current.value || '',
+      name: nameRef.current.value || "",
+      company: companyRef.current.value || "",
       theme: themeRef.current.value, // theme은 값이 없을 수 없음!
-      position: positionRef.current.value || '',
-      email: emailRef.current.value || '',
-      message: messageRef.current.value || '',
-      fileName: '',
-      fileUrl: '',
+      position: positionRef.current.value || "",
+      email: emailRef.current.value || "",
+      message: messageRef.current.value || "",
+      fileName: file.fileName || "",
+      fileUrl: file.fileUrl || "",
     };
     formRef.current.reset();
+    setFile({
+      fileName: null,
+      fileUrl: null,
+    });
     onAdd(card);
   };
 
@@ -71,7 +83,7 @@ const CardAddForm = ({ onAdd }) => {
         placeholder="Message"
       ></textarea>
       <div className={styles.fileInput}>
-        <ImageFileInput />
+        <FileInput name={file.fileName} onFileChange={onFileChange} />
       </div>
       <Button name="Add" onClick={onSubmit} />
     </form>
