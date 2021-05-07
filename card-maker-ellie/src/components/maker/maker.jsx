@@ -6,43 +6,12 @@ import Header from "../header/header";
 import Preview from "../preview/preview";
 import styles from "./maker.module.css";
 
-const Maker = ({ FileInput, authService }) => {
+const Maker = ({ FileInput, authService, cardRepository }) => {
   const history = useHistory();
-  const [cards, setCards] = useState({
-    1: {
-      id: "1",
-      name: "Ellie",
-      company: "Samsung",
-      theme: "dark",
-      position: "Software Engineer",
-      email: "dream.coder.elli@gmail.com",
-      message: "Dont forget to code your dream",
-      fileName: "ellie",
-      fileUrl: null,
-    },
-    2: {
-      id: 2,
-      name: "Ash",
-      company: "Uber",
-      theme: "light",
-      position: "Senior Software Engineer",
-      email: "ash@gmail.com",
-      message: "I love coding",
-      fileName: "ash",
-      fileUrl: null,
-    },
-    3: {
-      id: 3,
-      name: "Danbi",
-      company: "Instagram",
-      theme: "colorful",
-      position: "Front-end Developer",
-      email: "danbi.db@gmail.com",
-      message: "Design your dream",
-      fileName: "danbi",
-      fileUrl: null,
-    },
-  });
+  console.log(history);
+  const historyState = history?.location?.state;
+  const [cards, setCards] = useState({});
+  const [userId, setUserId] = useState(historyState?.id);
 
   const onLogout = () => {
     authService.logout();
@@ -50,7 +19,11 @@ const Maker = ({ FileInput, authService }) => {
 
   useEffect(() => {
     authService.onAuthChange((user) => {
-      !user && history.push("/");
+      if (user) {
+        setUserId(user.uid);
+      } else {
+        history.push("/");
+      }
     });
   });
 
