@@ -35,6 +35,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
       updated[card.id] = card;
       return updated;
     });
+    cardRepository.saveCard(userId, card); // Cloudinary DB에도 반영
   };
 
   const deleteCard = (card) => {
@@ -43,6 +44,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
       delete updated[card.id];
       return updated;
     });
+    cardRepository.removeCard(userId, card);
   };
 
   return (
