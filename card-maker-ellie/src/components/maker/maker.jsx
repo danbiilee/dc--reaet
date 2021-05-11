@@ -8,7 +8,6 @@ import styles from "./maker.module.css";
 
 const Maker = ({ FileInput, authService, cardRepository }) => {
   const history = useHistory();
-  console.log(history);
   const historyState = history?.location?.state;
   const [cards, setCards] = useState({});
   const [userId, setUserId] = useState(historyState?.id);
