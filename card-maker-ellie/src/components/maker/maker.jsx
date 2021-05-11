@@ -17,6 +17,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
     authService.logout();
   };
 
+  // 로그인에 관련된 useEffect
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
@@ -26,6 +27,19 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
       }
     });
   });
+
+  // 데이터 sync에 관련된 useEffect
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    const stopSync = cardRepository.syncCards(userId, (cards) =>
+      setCards(cards)
+    );
+
+    // 컴포넌트가 언마운트 되었을 때
+    return () => stopSync();
+  }, [userId]);
 
   // add와 update할 때의 처리가 동일
   const createOrUpdateCard = (card) => {
